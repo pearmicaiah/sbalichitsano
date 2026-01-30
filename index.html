@@ -49,6 +49,17 @@
     <link rel="stylesheet" href="assets/css/agrion.css" />
     <link rel="stylesheet" href="assets/css/agrion-responsive.css" />
 </head>
+<div class="video-modal" id="videoModal">
+    <div class="video-modal__overlay"></div>
+
+    <div class="video-modal__content">
+        <button class="video-modal__close">&times;</button>
+
+        <iframe src="https://www.youtube.com/embed/Mr9P4G3W0rg?si=-VFMi8AHeqCtIsDc" frameborder="0"
+            allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
+    </div>
+</div>
 
 <body class="custom-cursor">
 
@@ -815,24 +826,23 @@
         <!--Video One Start-->
         <section class="video-one">
             <div class="video-one-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
-                style="background-image: url(assets/images/backgrounds/video-one-bg.jpg)"></div>
+                style="background-image: url(assets/images/backgrounds/video-one-bg.jpg)">
+            </div>
+
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="video-one__inner">
 
                             <div class="video-one__video-link">
-                                <a href="https://www.youtube.com/watch?v=Get7rqXYrbQ" class="video-popup">
+                                <button class="video-trigger">
                                     <div class="video-one__video-icon">
                                         <span class="fa fa-play"></span>
                                         <i class="ripple"></i>
                                     </div>
-                                </a>
+                                </button>
                             </div>
 
-                            <div class="video-one__shape">
-                                <img src="assets/images/resources/video-one-1.png" alt="">
-                            </div>
 
                             <h2 class="video-one__video-title">
                                 Nutritious & Affordable<br>
@@ -845,6 +855,9 @@
             </div>
         </section>
         <!--Video One End-->
+
+
+
 
         <!--Faq One Start-->
         <section class="faq-one">
@@ -1711,6 +1724,25 @@
     <script src="assets/vendors/circleType/jquery.circleType.js"></script>
     <script src="assets/vendors/circleType/jquery.lettering.min.js"></script>
 
+    <script src="assets/vendors/jquery/jquery.min.js"></script>
+    <script src="assets/vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script>
+        document.querySelector('.video-trigger').addEventListener('click', function () {
+            document.getElementById('videoModal').classList.add('active');
+        });
+
+        document.querySelector('.video-modal__overlay').addEventListener('click', closeVideo);
+        document.querySelector('.video-modal__close').addEventListener('click', closeVideo);
+
+        function closeVideo() {
+            const modal = document.getElementById('videoModal');
+            modal.classList.remove('active');
+
+            // stop video
+            const iframe = modal.querySelector('iframe');
+            iframe.src = iframe.src;
+        }
+    </script>
 
 
 
